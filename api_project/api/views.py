@@ -4,6 +4,7 @@ from .serializers import BookSerializer
 from rest_framework import generics
 from rest_framework.viewsets import ModelViewSet
 from rest_framework import viewsets
+from rest_framework.permissions import IsAuthenticated
 
 # A view to list all books using DRF's generic ListAPIView
 class BookList(generics.ListAPIView):  # Ensure this inherits from ListAPIView
@@ -14,3 +15,7 @@ class BookList(generics.ListAPIView):  # Ensure this inherits from ListAPIView
 class BookViewSet(viewsets.ModelViewSet):
     queryset = Book.objects.all()
     serializer_class = BookSerializer
+    permission_classes = [IsAuthenticated] 
+
+
+    
